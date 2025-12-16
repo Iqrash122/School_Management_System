@@ -20,24 +20,26 @@ export default function Login() {
               <input
                 type="text"
                 placeholder="Enter User Name"
-                className="w-full mb-4 px-4 py-3 rounded bg-gray-100 outline-none"
+                className="w-full mb-4 px-4 py-3 rounded bg-gray-100 outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all duration-200"
               />
 
               <input
                 type="password"
                 placeholder="Enter Your Password"
-                className="w-full mb-2 px-4 py-3 rounded bg-gray-100 outline-none"
+                className="w-full mb-2 px-4 py-3 rounded bg-gray-100 outline-none  focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all duration-200"
               />
 
               <div className="text-right mb-4">
-                <span className="text-sm text-blue-600 cursor-pointer">
+                <span className="text-sm text-blue-600 cursor-pointer hover:underline">
                   Forgot your password?
                 </span>
               </div>
 
               {/* SIGN IN */}
               <button
-                className="w-full py-3 mb-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-600 hover:text-white"
+                onClick={() => navigate("./dashboard")}
+
+                className="w-full py-3 mb-4 border-2 border-blue-600 cursor-pointer text-blue-600 font-semibold rounded-lg hover:bg-blue-600 hover:text-white"
               >
                 SIGN IN
               </button>
@@ -45,7 +47,7 @@ export default function Login() {
               {/* REGISTER */}
               <button
                 onClick={() => navigate("/signup")}
-                className="w-full py-3 border-2 border-blue-500 text-blue-500 font-semibold rounded-lg hover:bg-blue-500 hover:text-white"
+                className="w-full py-3 border-2 border-blue-500 cursor-pointer text-blue-500 font-semibold rounded-lg hover:bg-blue-500 hover:text-white"
               >
                 REGISTER
               </button>
