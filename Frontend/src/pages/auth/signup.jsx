@@ -39,25 +39,25 @@ export default function Signup() {
               <input
                 type="text"
                 placeholder="Enter Your Name"
-                className="w-full mb-4 px-4 py-3 bg-gray-100 rounded outline-none  focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all duration-200"
+                className="w-full mb-4 px-4 py-3 bg-gray-100 rounded outline-none  focus:bg-white focus:ring-2 focus:ring-(--secondary) transition-all duration-200"
               />
 
               <input
                 type="password"
                 placeholder="Enter Your Password"
-                className="w-full mb-4 px-4 py-3 bg-gray-100 rounded outline-none  focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all duration-200"
+                className="w-full mb-4 px-4 py-3 bg-gray-100 rounded outline-none  focus:bg-white focus:ring-2 focus:ring-(--secondary) transition-all duration-200"
               />
 
               <input
                 type="password"
                 placeholder="Confirm Your Password"
-                className="w-full mb-6 px-4 py-3 bg-gray-100 rounded outline-none  focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all duration-200"
+                className="w-full mb-6 px-4 py-3 bg-gray-100 rounded outline-none  focus:bg-white focus:ring-2 focus:ring-(--secondary) transition-all duration-200"
               />
 
               {/* REGISTER BUTTON */}
               <button
-                className="w-full py-3 border-2 cursor-pointer border-blue-600 text-blue-600 font-semibold rounded-lg
-                hover:bg-blue-600 hover:text-white transition-all duration-200 active:scale-95"
+                className="w-full py-3 border-2 cursor-pointer border-(-secondary) text-(--secondary) font-semibold rounded-lg
+                hover:bg-(--secondary) hover:text-white transition-all duration-200 active:scale-95"
               >
                 REGISTER
               </button>

@@ -10,8 +10,8 @@ export default function sideBar() {
   const [accOpen, isAccOpen] = useState(false);
   return (
     <div>
-      <aside class="flex flex-col text-zinc-100 w-72 min-h-screen bg-zinc-800">
-        <a href="#" class="flex items-center h-16 gap-3 bg-zinc-900 px-7">
+      <aside class="flex flex-col text-zinc-100 w-72 min-h-screen bg-(--primary)">
+        <a href="#" class="flex items-center h-16 gap-3 bg-(--secondary) px-7">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -29,13 +29,13 @@ export default function sideBar() {
           <span class="font-bold">The Dark Knight</span>
         </a>
         <nav class="flex flex-col flex-grow gap-2 py-5 px-4">
-          <div class="relative flex items-center w-full rounded-full hover:bg-zinc-900 group">
-            <a href="#" class="flex items-center flex-grow h-12 gap-6 px-5">
+          <div class="relative flex items-center w-full rounded-full bg-(--secondary) group">
+            <a href="/dashboard" class="flex items-center flex-grow h-12 gap-6 px-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                class="w-4 h-4 text-zinc-400 group-hover:text-indigo-500"
+                class="w-4 h-4 text-white "
               >
                 <path d="M5.127 3.502L5.25 3.5h9.5c.041 0 .082 0 .123.002A2.251 2.251 0 0012.75 2h-5.5a2.25 2.25 0 00-2.123 1.502zM1 10.25A2.25 2.25 0 013.25 8h13.5A2.25 2.25 0 0119 10.25v5.5A2.25 2.25 0 0116.75 18H3.25A2.25 2.25 0 011 15.75v-5.5zM3.25 6.5c-.04 0-.082 0-.123.002A2.25 2.25 0 015.25 5h9.5c.98 0 1.814.627 2.123 1.502a3.819 3.819 0 00-.123-.002H3.25z" />
               </svg>
@@ -44,13 +44,13 @@ export default function sideBar() {
           </div>
 
           {/* students  */}
-          <div class="relative flex items-center w-full rounded-full bg-zinc-900 group">
+          <div class="relative flex items-center w-full rounded-full bg-(--secondary) group">
             <a href="#" class="flex items-center flex-grow h-12 gap-6 px-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                class="w-4 h-4 text-indigo-500"
+                class="w-4 h-4 text-white"
               >
                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
                 <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
@@ -81,38 +81,32 @@ export default function sideBar() {
           {open && (
             <div class="flex flex-col w-full pl-10">
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/students"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">New Post</span>
+                <span class="text-sm">Index</span>
               </a>
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/students/create"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">Drafts</span>
+                <span class="text-sm">Create</span>
               </a>
-              <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
-              >
-                <span class="text-sm">Published</span>
-              </a>
+             
             </div>
           )}
 
           {/* Teachers  */}
 
-          <div class="relative flex items-center w-full rounded-full bg-zinc-900 group">
+          <div class="relative flex items-center w-full rounded-full bg-(--secondary) group">
             <a href="#" class="flex items-center flex-grow h-12 gap-6 px-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                class="w-4 h-4 text-indigo-500"
+                class="w-4 h-4 text-white"
               >
                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
                 <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
@@ -143,38 +137,32 @@ export default function sideBar() {
           {teacherOpen && (
             <div class="flex flex-col w-full pl-10">
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/teacher"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">New Post</span>
+                <span class="text-sm">Index</span>
               </a>
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/teacher/create"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">Drafts</span>
+                <span class="text-sm">Create</span>
               </a>
-              <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
-              >
-                <span class="text-sm">Published</span>
-              </a>
+           
             </div>
           )}
 
           {/* class  */}
 
-          <div class="relative flex items-center w-full rounded-full bg-zinc-900 group">
+          <div class="relative flex items-center w-full rounded-full bg-(--secondary) group">
             <a href="#" class="flex items-center flex-grow h-12 gap-6 px-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                class="w-4 h-4 text-indigo-500"
+                class="w-4 h-4 text-white"
               >
                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
                 <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
@@ -205,38 +193,32 @@ export default function sideBar() {
           {classOpen && (
             <div class="flex flex-col w-full pl-10">
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/class"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">New Post</span>
+                <span class="text-sm">Index</span>
               </a>
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/class/create"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">Drafts</span>
+                <span class="text-sm">Create</span>
               </a>
-              <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
-              >
-                <span class="text-sm">Published</span>
-              </a>
+           
             </div>
           )}
 
           {/* subjetcs  */}
 
-          <div class="relative flex items-center w-full rounded-full bg-zinc-900 group">
+          <div class="relative flex items-center w-full rounded-full bg-(--secondary) group">
             <a href="#" class="flex items-center flex-grow h-12 gap-6 px-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                class="w-4 h-4 text-indigo-500"
+                class="w-4 h-4 text-white"
               >
                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
                 <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
@@ -267,37 +249,31 @@ export default function sideBar() {
           {subjectOpen && (
             <div class="flex flex-col w-full pl-10">
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/subjects"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">New Post</span>
+                <span class="text-sm">Index</span>
               </a>
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/subjects/create"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">Drafts</span>
+                <span class="text-sm">Create</span>
               </a>
-              <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
-              >
-                <span class="text-sm">Published</span>
-              </a>
+             
             </div>
           )}
 
           {/* exam  */}
-          <div class="relative flex items-center w-full rounded-full bg-zinc-900 group">
+          <div class="relative flex items-center w-full rounded-full bg-(--secondary) group">
             <a href="#" class="flex items-center flex-grow h-12 gap-6 px-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                class="w-4 h-4 text-indigo-500"
+                class="w-4 h-4 text-white"
               >
                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
                 <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
@@ -328,38 +304,32 @@ export default function sideBar() {
           {examOpen && (
             <div class="flex flex-col w-full pl-10">
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/exam"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">New Post</span>
+                <span class="text-sm">Index</span>
               </a>
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/exam/create"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">Drafts</span>
+                <span class="text-sm">Create</span>
               </a>
-              <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
-              >
-                <span class="text-sm">Published</span>
-              </a>
+              
             </div>
           )}
 
           {/* attendence  */}
 
-          <div class="relative flex items-center w-full rounded-full bg-zinc-900 group">
+          <div class="relative flex items-center w-full rounded-full bg-(--secondary) group">
             <a href="#" class="flex items-center flex-grow h-12 gap-6 px-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                class="w-4 h-4 text-indigo-500"
+                class="w-4 h-4 text-white"
               >
                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
                 <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
@@ -390,38 +360,32 @@ export default function sideBar() {
           {attendenceOpen && (
             <div class="flex flex-col w-full pl-10">
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/attendance"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">New Post</span>
+                <span class="text-sm">Index</span>
               </a>
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/attendance/create"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">Drafts</span>
+                <span class="text-sm">Create</span>
               </a>
-              <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
-              >
-                <span class="text-sm">Published</span>
-              </a>
+             
             </div>
           )}
 
           {/* accountant  */}
 
-          <div class="relative flex items-center w-full rounded-full bg-zinc-900 group">
+          <div class="relative flex items-center w-full rounded-full bg-(--secondary) group">
             <a href="#" class="flex items-center flex-grow h-12 gap-6 px-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                class="w-4 h-4 text-indigo-500"
+                class="w-4 h-4 text-white"
               >
                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
                 <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
@@ -452,26 +416,20 @@ export default function sideBar() {
           {accOpen && (
             <div class="flex flex-col w-full pl-10">
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/accounts"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">New Post</span>
+                <span class="text-sm">Index</span>
               </a>
               <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
+                href="/accounts/create"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
               >
-                <span class="text-sm">Drafts</span>
+                <span class="text-sm">Create</span>
               </a>
-              <a
-                href="#"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-zinc-900 font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-zinc-600 after:absolute after:-left-4"
-              >
-                <span class="text-sm">Published</span>
-              </a>
+             
             </div>
           )}
 

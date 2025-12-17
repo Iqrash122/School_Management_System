@@ -5,28 +5,28 @@ export default function Login() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-(--text) flex items-center justify-center">
+    <div className="min-h-screen bg-(--primary) flex items-center justify-center">
       <div className="w-full max-w-7xl bg-transparent px-4">
         <div className="flex flex-col md:flex-row min-h-[85vh] overflow-hidden rounded-lg">
           {/* LEFT PANEL */}
-          <div className="md:w-1/2 w-full bg-(--primary) flex flex-col items-center justify-center text-white px-8 py-12">
+          <div className="md:w-1/2 w-full bg-(--secondary) flex flex-col items-center justify-center text-white px-8 py-12">
             <img src={Logo} alt="School Logo" />
             <h1 className="text-[70px] font-bold">WELCOME</h1>
           </div>
 
           {/* RIGHT PANEL */}
-          <div className="md:w-1/2 w-full bg-(--primary) flex items-center justify-center relative">
+          <div className="md:w-1/2 w-full bg-(--secondary) flex items-center justify-center relative">
             <div className="bg-white w-full max-w-sm rounded-xl shadow-xl p-8">
               <input
                 type="text"
                 placeholder="Enter User Name"
-                className="w-full mb-4 px-4 py-3 rounded bg-gray-100 outline-none focus:bg-white focus:ring-2 focus:ring-(--primary) transition-all duration-200"
+                className="w-full mb-4 px-4 py-3 rounded bg-gray-100 outline-none focus:bg-white focus:ring-2 focus:ring-(--secondary) transition-all duration-200"
               />
 
               <input
                 type="password"
                 placeholder="Enter Your Password"
-                className="w-full mb-2 px-4 py-3 rounded bg-gray-100 outline-none  focus:bg-white focus:ring-2 focus:ring-(--primary) transition-all duration-200"
+                className="w-full mb-2 px-4 py-3 rounded bg-gray-100 outline-none  focus:bg-white focus:ring-2 focus:ring-(--secondary) transition-all duration-200"
               />
 
               <div className="text-right mb-4">
