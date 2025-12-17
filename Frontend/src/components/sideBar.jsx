@@ -30,7 +30,10 @@ export default function sideBar() {
         </a>
         <nav class="flex flex-col flex-grow gap-2 py-5 px-4">
           <div class="relative flex items-center w-full rounded-full bg-(--secondary) group">
-            <a href="/dashboard" class="flex items-center flex-grow h-12 gap-6 px-5">
+            <a
+              href="/dashboard"
+              class="flex items-center flex-grow h-12 gap-6 px-5"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
@@ -94,7 +97,6 @@ export default function sideBar() {
               >
                 <span class="text-sm">Create</span>
               </a>
-             
             </div>
           )}
 
@@ -150,7 +152,6 @@ export default function sideBar() {
               >
                 <span class="text-sm">Create</span>
               </a>
-           
             </div>
           )}
 
@@ -206,7 +207,6 @@ export default function sideBar() {
               >
                 <span class="text-sm">Create</span>
               </a>
-           
             </div>
           )}
 
@@ -262,7 +262,6 @@ export default function sideBar() {
               >
                 <span class="text-sm">Create</span>
               </a>
-             
             </div>
           )}
 
@@ -317,7 +316,6 @@ export default function sideBar() {
               >
                 <span class="text-sm">Create</span>
               </a>
-              
             </div>
           )}
 
@@ -366,14 +364,6 @@ export default function sideBar() {
               >
                 <span class="text-sm">Index</span>
               </a>
-              <a
-                href="/attendance/create"
-                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
-						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
-              >
-                <span class="text-sm">Create</span>
-              </a>
-             
             </div>
           )}
 
@@ -429,11 +419,8 @@ export default function sideBar() {
               >
                 <span class="text-sm">Create</span>
               </a>
-             
             </div>
           )}
-
-
         </nav>
       </aside>
     </div>
