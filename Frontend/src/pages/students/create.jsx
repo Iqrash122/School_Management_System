@@ -20,7 +20,7 @@ export default function Create() {
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-semibold text-zinc-800">Add New Student</h2>
       </div>
-      <StudentForm mode="student" />
+      <StudentForm mode="student" type="create" />
     </div>
   );
 }

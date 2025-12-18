@@ -1,87 +1,65 @@
 import mongoose from "mongoose";
+import Counter from "./Counter.js";
 
 const studentSchema = new mongoose.Schema(
     {
-        // IDs
         registrationNumber: {
             type: String,
-            required: true,
             unique: true,
-            trim: true,
         },
 
-        rollNumber: {
-            type: String,
-            trim: true,
-        },
+        rollNumber: String,
 
-        // Basic Info
-        firstName: {
-            type: String,
-            required: true,
-            trim: true,
-        },
+        firstName: { type: String, required: true },
+        lastName: { type: String, required: true },
 
-        lastName: {
-            type: String,
-            required: true,
-            trim: true,
-        },
+        gender: { type: String, enum: ["Male", "Female"], required: true },
+        dateOfBirth: { type: Date, required: true },
 
-        gender: {
-            type: String,
-            enum: ["Male", "Female"],
-            required: true,
-        },
+        StuCnic: Number,
+        fName: String,
+        fCnic: Number,
+        fNumber: Number,
 
-        dateOfBirth: {
-            type: Date,
-            required: true,
-        },
+        class: String,
+        section: String,
 
-        // Academic Info
-        class: {
-            type: String,
-            required: true,
-        },
-
-        section: {
-            type: String,
-            required: true,
-        },
-
-        // Personal Info
-        bloodGroup: {
-            type: String,
-            required: true,
-            enum: ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"],
-        },
-
-        religion: {
-            type: String,
-            required: true,
-        },
-
-        bio: {
-            type: String,
-            maxlength: 500,
-        },
-
-        // Contact
-        email: {
-            type: String,
-            lowercase: true,
-            trim: true,
-        },
-
-        // Photo
-        photo: {
-            type: String, // image URL / filename
-        },
+        bloodGroup: String,
+        religion: String,
+        bio: String,
+        photo: String,
     },
-    {
-        timestamps: true,
-    }
+    { timestamps: true }
 );
+
+/* 🔥 AUTO REGISTRATION NUMBER */
+studentSchema.pre("save", async function (next) {
+    if (this.registrationNumber) return next();
+
+    if (!this.class || !this.section) {
+        return next(new Error("Class and Section are required for registration number"));
+    }
+
+    // 1️⃣ DATE (YYMMDD)
+    const now = new Date();
+    const yy = String(now.getFullYear()).slice(2);
+    const mm = String(now.getMonth() + 1).padStart(2, "0");
+    const dd = String(now.getDate()).padStart(2, "0");
+    const datePart = `${yy}${mm}${dd}`;
+
+    // 2️⃣ COUNTER (GLOBAL STUDENT)
+    const counter = await Counter.findOneAndUpdate(
+        { name: "student" },
+        { $inc: { seq: 1 } },
+        { new: true, upsert: true }
+    );
+
+    const seqPart = String(counter.seq).padStart(4, "0");
+
+    // 3️⃣ FINAL REGISTRATION NUMBER
+    this.registrationNumber = `STU-${this.class}${this.section}-${datePart}-${seqPart}`;
+
+});
+
 
 export default mongoose.model("Student", studentSchema);
