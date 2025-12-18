@@ -1,6 +1,6 @@
 import Breadcrumbs from "../../components/breadCrums/breadcrums";
 import { useNavigate } from "react-router-dom";
-import StudentForm from "../../components/form";
+import StudentForm from "../../components/StudentForm";
 export default function Create() {
   const navigate = useNavigate();
 
