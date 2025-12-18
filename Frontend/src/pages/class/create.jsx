@@ -5,6 +5,14 @@ import ClassForm from "../../components/class/ClassForm";
 export default function Create() {
   const navigate = useNavigate();
 
+  const handleCreate = async (data) => {
+    await fetch("http://localhost:5000/api/classes/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    navigate("/class");
+  };
   return (
     <div>
       {/* HEADER */}
@@ -27,7 +35,7 @@ export default function Create() {
         Add New Class
       </h2>
 
-      <ClassForm />
+      <ClassForm onSubmit={handleCreate} />
     </div>
   );
 }
