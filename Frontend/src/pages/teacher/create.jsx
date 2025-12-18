@@ -1,26 +1,24 @@
 import Breadcrumbs from "../../components/breadCrums/breadcrums";
 import { useNavigate } from "react-router-dom";
 import TeacherForm from "../../components/TeacherForm";
-export default function Create() {
+
+export default function TeacherCreate() {
   const navigate = useNavigate();
 
   return (
     <div>
-      <div className="flex flex-row justify-between items-center">
+      <div className="flex justify-between">
         <Breadcrumbs />
-
         <button
           onClick={() => navigate("/teacher")}
-          className=" px-12 py-3 rounded-md  bg-(--secondary) text-white font-semibold text-lg hover:bg-(--primary) cursor-pointer transition"
+          className="px-12 py-3 rounded-md bg-[var(--secondary)] text-white"
         >
           Back
         </button>
       </div>
 
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-zinc-800">Add New Teacher</h2>
-      </div>
-      <TeacherForm mode="teacher" />
+      <h2 className="text-xl font-semibold mb-4">Add New Teacher</h2>
+      <TeacherForm />
     </div>
   );
 }

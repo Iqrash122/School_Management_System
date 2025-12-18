@@ -2,44 +2,25 @@ import Breadcrumbs from "../../components/breadCrums/breadcrums";
 import TeacherFilter from "../../components/filterBar";
 import TeacherTable from "../../components/table";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export default function Index() {
+export default function TeacherIndex() {
   const navigate = useNavigate();
-  const students = [
-    {
-      roll: "0021",
-      name: "Mark Willy",
-      gender: "Male",
-      class: "2",
-      section: "A",
-      parent: "Jack Sparrow",
-      address: "TA-107 Newyork",
-      dob: "02/05/2001",
-      phone: "+123 9988568",
-      avatar: "https://i.pravatar.cc/150?img=12",
-    },
-    {
-      roll: "0022",
-      name: "Jessia Rose",
-      gender: "Female",
-      class: "1",
-      section: "A",
-      parent: "Maria Jamans",
-      address: "59 Australia, Sydney",
-      dob: "02/05/2001",
-      phone: "+123 9988568",
-      email: "kazifahim93@gmail.com",
-      avatar: "https://i.pravatar.cc/150?img=47",
-    },
-  ];
+  const [teachers, setTeachers] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/teachers")
+      .then((res) => res.json())
+      .then(setTeachers);
+  }, []);
+
   return (
     <div>
-      <div className="flex flex-row justify-between items-center">
+      <div className="flex justify-between">
         <Breadcrumbs />
-
         <button
           onClick={() => navigate("/teacher/create")}
-          className=" px-12 py-3 rounded-md  bg-(--secondary) text-white font-semibold text-lg hover:bg-(--primary) cursor-pointer transition"
+          className="px-12 py-3 rounded-md bg-[var(--secondary)] text-white"
         >
           Create
         </button>
@@ -47,9 +28,7 @@ export default function Index() {
 
       <div className="bg-white rounded-md shadow-sm">
         <TeacherFilter />
-        <div>
-          <TeacherTable data={students} />
-        </div>
+        <TeacherTable data={teachers} />
       </div>
     </div>
   );
