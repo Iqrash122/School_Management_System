@@ -1,21 +1,23 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import connectDB from "../config/db.js";
+import sectionRoutes from '../routes/sectionRoutes.js'
+dotenv.config();
+connectDB();
+
 const app = express();
-const PORT = 5000;
 
-// Enable CORS to allow frontend requests
 app.use(cors());
+app.use(express.json());
+app.use("/api/sections", sectionRoutes);
 
-// Default route
+
 app.get("/", (req, res) => {
-    res.send("Backend API Running 🚀");
+    res.send("API Running...");
 });
 
-// API route for frontend
-app.get("/api/msg", (req, res) => {
-    res.json({ msg: "Hello from dididishhhhhhh 👋" });
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
-
-app.listen(PORT, () =>
-    console.log(`🚀 Server running on http://localhost:${PORT}`)
-);

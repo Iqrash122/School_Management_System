@@ -207,6 +207,14 @@ export default function sideBar() {
               >
                 <span class="text-sm">Create</span>
               </a>
+
+               <a
+                href="/class/section"
+                class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
+						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
+                >
+                <span class="text-sm">Section</span>
+              </a>
             </div>
           )}
 
@@ -313,9 +321,10 @@ export default function sideBar() {
                 href="/exam/create"
                 class="relative flex items-center h-12 pl-5 rounded-full hover:bg-(--secondary) font-light text-zinc-200
 						   after:block after:w-2 after:h-2 after:rounded-sm after:bg-(--secondary) after:absolute after:-left-4"
-              >
+                >
                 <span class="text-sm">Create</span>
               </a>
+             
             </div>
           )}
 
