@@ -47,7 +47,11 @@ import AccountantIndex from "./pages/accounts/index";
 import AccountantCreate from "./pages/accounts/create";
 import AccountantUpdate from "./pages/accounts/update";
 
+//time table
+import Timetable from "./pages/timetable/Index";
+
 import "./App.css";
+import TimeTableCreate from "./pages/timetable/create";
 
 function App() {
   return (
@@ -70,7 +74,7 @@ function App() {
         {/* CLASS */}
         <Route path="/class" element={<ClassIndex />} />
         <Route path="/class/create" element={<ClassCreate />} />
-        <Route path="/class/:id/edit" element={<ClassUpdate />} />  
+        <Route path="/class/:id/edit" element={<ClassUpdate />} />
         <Route path="/class/section" element={<Section />} />
         <Route path="/class/section/create" element={<SectionCreate />} />
         <Route path="/class/section/edit/:id" element={<EditSection />} />
@@ -90,6 +94,10 @@ function App() {
         <Route path="/accounts" element={<AccountantIndex />} />
         <Route path="/accounts/create" element={<AccountantCreate />} />
         <Route path="/accounts/update/:id" element={<AccountantUpdate />} />
+
+        {/* //timetable  */}
+        <Route path="/timetable" element={<Timetable />} />
+        <Route path="/timetable/create" element={<TimeTableCreate />} />
       </Route>
     </Routes>
   );

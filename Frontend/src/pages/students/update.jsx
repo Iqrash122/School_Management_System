@@ -22,7 +22,7 @@ export default function StudentsUpdate() {
         <Breadcrumbs />
         <button
           onClick={() => navigate("/students")}
-          className="px-6 py-2 bg-gray-600 text-white rounded"
+          className="px-6 py-2 bg-(--secondary) text-white rounded"
         >
           Back
         </button>
