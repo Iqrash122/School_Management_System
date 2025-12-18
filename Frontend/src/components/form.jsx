@@ -75,7 +75,6 @@ export default function CreateForm({ mode = "student" }) {
           </div>
         )}
 
-      
         {/* First Name */}
         <div>
           <label className="text-sm font-medium text-zinc-600">
@@ -134,6 +133,63 @@ export default function CreateForm({ mode = "student" }) {
           </div>
         )}
 
+        {/* studnet cnic  */}
+
+        {mode === "student" && (
+          <div>
+            <label className="text-sm font-medium text-zinc-600">
+              Cnic Number
+            </label>
+            <input
+              className="mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]
+            text-sm outline-none focus:ring-2 focus:ring-[var(--secondary)]"
+            />
+          </div>
+        )}
+
+        {/* Father Name  */}
+
+        {mode === "student" && (
+          <div>
+            <label className="text-sm font-medium text-zinc-600">
+              Father Name
+            </label>
+            <input
+              className="mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]
+            text-sm outline-none focus:ring-2 focus:ring-[var(--secondary)]"
+            />
+          </div>
+        )}
+
+        {/* Father CNIC  */}
+        {mode === "student" && (
+          <div>
+            <label className="text-sm font-medium text-zinc-600">
+              Father CNIC
+            </label>
+            <input
+              className="mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]
+            text-sm outline-none focus:ring-2 focus:ring-[var(--secondary)]"
+            />
+          </div>
+        )}
+
+        {/* Phone Number */}
+
+        {mode === "student" && (
+          <div>
+            <label className="text-sm font-medium text-zinc-600">
+              Father Phone Number
+            </label>
+            <input
+              className="mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]
+            text-sm outline-none focus:ring-2 focus:ring-[var(--secondary)]"
+            />
+          </div>
+        )}
+
+
+
         {mode === "teacher" && (
           <div>
             <label className="text-sm font-medium text-zinc-600">
@@ -166,15 +222,7 @@ export default function CreateForm({ mode = "student" }) {
           ]}
         />
 
-        {/* Email */}
-        <div>
-          <label className="text-sm font-medium text-zinc-600">E-mail</label>
-          <input
-            type="email"
-            className="mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]
-            text-sm outline-none focus:ring-2 focus:ring-[var(--secondary)]"
-          />
-        </div>
+       
 
         {/* Class */}
         <SelectField
