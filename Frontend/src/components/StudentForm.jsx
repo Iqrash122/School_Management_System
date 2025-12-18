@@ -14,7 +14,7 @@ function SelectField({ label, options, value, onChange }) {
 
       <Listbox value={value} onChange={onChange}>
         <div className="relative mt-2">
-          <ListboxButton className="w-full rounded-md bg-[#F3F4F6] px-4 py-3 text-left text-sm outline-none focus:ring-2 focus:ring-[var(--secondary)]">
+          <ListboxButton className="w-full rounded-md bg-[#F3F4F6] px-4 py-3 text-left text-sm outline-none focus:ring-2 focus:ring-(--secondary)">
             <span className="block truncate">
               {value ? value.name : `Please select ${label}`}
             </span>
@@ -196,18 +196,18 @@ export default function StudentForm({
   };
 
   return (
-    <div className="bg-white rounded-md shadow-sm p-6">
-      <form
-        onSubmit={handleSubmit}
-        className="grid grid-cols-1 md:grid-cols-4 gap-6"
-      >
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-row gap-6 flex-wrap"
+    >
+      <div className="bg-white rounded-md shadow-sm p-6 w-2/3 grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* REGISTRATION (AUTO) */}
         <input
           disabled
           placeholder="Registration auto-generated"
           className="bg-gray-200 px-4 py-3 rounded-md"
-          hidden={type=== "update"}
-          
+          hidden={type === "update"}
+
         />
 
         <Input label="First Name *" value={firstName} setValue={setFirstName} />
@@ -262,8 +262,45 @@ export default function StudentForm({
           onChange={setReligion}
         />
 
+
+        <div className="md:col-span-3 flex gap-4 mt-6 justify-between items-end">
+          <span className="text-red-500 text-[12px] font-bold">
+            Fields marked with (*) are required !
+          </span>
+
+          <div className="flex gap-3">
+            <button className="px-10 py-3 rounded-md bg-[#0A2540] text-white">
+              Save
+            </button>
+            <button className="px-10 py-3 rounded-md bg-[#0A2540] text-white">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="bg-white rounded-md shadow-sm p-6 flex-1">
+        <label className="text-sm font-medium text-zinc-600">
+          Upload Avatar
+        </label>
+
+        <label className="mt-3 w-full h-34 border-2 border-dashed border-zinc-300 rounded-md flex items-center justify-center cursor-pointer bg-[#F9FAFB]">
+          {photoPreview ? (
+            <img src={photoPreview} className="w-full h-full object-cover" />
+          ) : (
+            <p className="text-sm text-zinc-500">Click to upload</p>
+          )}
+
+          <input
+            type="file"
+            hidden
+            onChange={(e) =>
+              setPhotoPreview(URL.createObjectURL(e.target.files[0]))
+            }
+          />
+        </label>
+
         <div className="md:col-span-4">
-          <label className="text-sm font-medium text-zinc-600">Short BIO</label>
+          <label className="text-sm font-medium text-zinc-600"> BIO</label>
           <textarea
             value={bio}
             onChange={(e) => setBio(e.target.value)}
@@ -271,28 +308,8 @@ export default function StudentForm({
             className="mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]"
           />
         </div>
-
-        {/* PHOTO (PREVIEW ONLY) */}
-        <div>
-          <label className="text-sm font-medium text-zinc-600">
-            Upload Student Photo
-          </label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) =>
-              setPhotoPreview(URL.createObjectURL(e.target.files[0]))
-            }
-          />
-        </div>
-
-        <div className="md:col-span-4">
-          <button className="px-10 py-3 rounded-md bg-[#0A2540] text-white">
-            Save Student
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 
