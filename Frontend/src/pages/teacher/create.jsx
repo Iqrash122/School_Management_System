@@ -11,7 +11,7 @@ export default function TeacherCreate() {
         <Breadcrumbs />
         <button
           onClick={() => navigate("/teacher")}
-          className="px-12 py-3 rounded-md bg-[var(--secondary)] text-white"
+          className="px-12 py-3 rounded-md bg-(--secondary) text-white"
         >
           Back
         </button>

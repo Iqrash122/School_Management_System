@@ -1,5 +1,19 @@
 import Teacher from "../models/Teacher.js";
 import Counter from "../models/Counter.js";
+
+
+const generateTeacherId = async () => {
+    const counter = await Counter.findOneAndUpdate(
+        { key: "teacher" },
+        { $inc: { value: 1 } },
+        { new: true, upsert: true }
+    );
+
+    return `TCH-${String(counter.value).padStart(4, "0")}`;
+};
+
+
+
 // CREATE
 export const createTeacher = async (req, res) => {
     try {
@@ -7,15 +21,15 @@ export const createTeacher = async (req, res) => {
 
         const teacher = await Teacher.create({
             ...req.body,
-            idNumber, // 🔥 auto generated
+            idNumber,
         });
 
         res.status(201).json(teacher);
     } catch (error) {
+        console.error("CREATE TEACHER ERROR:", error);
         res.status(500).json({ message: error.message });
     }
 };
-
 
 
 // GET ALL
@@ -61,12 +75,3 @@ export const deleteTeacher = async (req, res) => {
 
 
 
-const generateTeacherId = async () => {
-    const counter = await Counter.findOneAndUpdate(
-        { key: "teacher" },
-        { $inc: { value: 1 } },
-        { new: true, upsert: true }
-    );
-
-    return `TCH-${String(counter.value).padStart(4, "0")}`;
-};
