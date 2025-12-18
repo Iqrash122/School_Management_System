@@ -4,16 +4,20 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/react";
-import { useState } from "react";
 
-export default function SubjectSelect({ label, options }) {
-  const [selected, setSelected] = useState(null);
+export default function SubjectSelect({
+  label,
+  options = [],
+  value,
+  onChange,
+}) {
+  const selected = options.find((o) => o._id === value) || null;
 
   return (
     <div>
       <label className="text-sm font-medium text-zinc-600">{label}</label>
 
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={selected} onChange={(val) => onChange(val._id)}>
         <div className="relative mt-2">
           <ListboxButton
             className="
@@ -34,7 +38,7 @@ export default function SubjectSelect({ label, options }) {
           >
             {options.map((item) => (
               <ListboxOption
-                key={item.id}
+                key={item._id}
                 value={item}
                 className="
                   cursor-pointer px-4 py-2

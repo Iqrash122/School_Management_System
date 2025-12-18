@@ -6,6 +6,8 @@ import sectionRoutes from '../routes/sectionRoutes.js'
 import classRoutes from "../routes/classRoutes.js";
 import studentsRoutes from "../routes/studentRoutes.js";
 import teacherRoutes from '../routes/teacherRoutes.js'
+import subjectRoutes from "../routes/subjectRoutes.js";
+import timeTableRoutes from '../routes/timeTableRoutes.js'
 dotenv.config();
 connectDB();
 
@@ -17,6 +19,8 @@ app.use("/api/sections", sectionRoutes);
 app.use("/api/classes", classRoutes);
 app.use("/api/students", studentsRoutes);
 app.use("/api/teachers", teacherRoutes);
+app.use("/api/subjects", subjectRoutes);
+app.use("/api/timetable", timeTableRoutes);
 
 
 app.get("/", (req, res) => {

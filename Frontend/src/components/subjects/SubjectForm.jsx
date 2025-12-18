@@ -1,101 +1,147 @@
+import { useEffect, useState } from "react";
 import SubjectSelect from "./SubjectSelect";
+import { useNavigate } from "react-router-dom";
 
-export default function SubjectForm() {
+export default function SubjectForm({ editData }) {
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    name: "",
+    type: "",
+    class: "",
+    section: "",
+    teacher: "",
+    description: "",
+  });
+
+  const [classes, setClasses] = useState([]);
+  const [sections, setSections] = useState([]);
+  const [teachers, setTeachers] = useState([]);
+
+  /* PREFILL */
+  useEffect(() => {
+    if (editData) {
+      setForm({
+        name: editData.name,
+        type: editData.type,
+        class: editData.class?._id,
+        section: editData.section?._id,
+        teacher: editData.teacher?._id,
+        description: editData.description || "",
+      });
+    }
+  }, [editData]);
+
+  /* FETCH DROPDOWNS */
+  useEffect(() => {
+    fetch("http://localhost:5000/api/classes/show")
+      .then((r) => r.json())
+      .then((d) => setClasses(d.classes || d));
+
+    fetch("http://localhost:5000/api/sections/show")
+      .then((r) => r.json())
+      .then((d) => setSections(d.sections || d));
+
+    fetch("http://localhost:5000/api/teachers/get")
+      .then((r) => r.json())
+      .then(setTeachers);
+  }, []);
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!form.name || !form.type || !form.class || !form.teacher) {
+    alert("Please fill all required fields");
+    return;
+  }
+
+  // ✅ IMPORTANT: clean payload
+  const payload = { ...form };
+
+  if (!payload.section) {
+    delete payload.section; // 👈 THIS FIXES THE ERROR
+  }
+
+  console.log("SUBJECT PAYLOAD:", payload);
+
+  const url = editData
+    ? `http://localhost:5000/api/subjects/update/${editData._id}`
+    : "http://localhost:5000/api/subjects/create";
+
+  const method = editData ? "PUT" : "POST";
+
+  const res = await fetch(url, {
+    method,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const err = await res.json();
+    alert(err.message || "Error saving subject");
+    return;
+  }
+
+  navigate("/subjects");
+};
+
   return (
     <div className="bg-white rounded-md shadow-sm p-6">
-      <form className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* SUBJECT NAME */}
-        <div>
-          <label className="text-sm font-medium text-zinc-600">
-            Subject Name *
-          </label>
-          <input
-            type="text"
-            placeholder="e.g Mathematics"
-            className="
-              mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]
-              text-sm outline-none focus:ring-2 focus:ring-[var(--secondary)]
-            "
-          />
-        </div>
-
-        {/* SUBJECT TYPE */}
-        <SubjectSelect
-          label="Subject Type *"
-          options={[
-            { id: 1, name: "Core" },
-            { id: 2, name: "Optional" },
-          ]}
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
+        <input
+          placeholder="Subject Name"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          className="px-4 py-3 bg-[#F3F4F6] rounded-md"
         />
 
-        {/* CLASS */}
         <SubjectSelect
-          label="Class *"
+          label="Type"
+          value={form.type}
           options={[
-            { id: 1, name: "6" },
-            { id: 2, name: "7" },
-            { id: 3, name: "8" },
-            { id: 4, name: "9" },
-            { id: 5, name: "10" },
+            { _id: "Core", name: "Core" },
+            { _id: "Optional", name: "Optional" },
           ]}
+          onChange={(v) => setForm({ ...form, type: v })}
         />
 
-        {/* SECTION */}
         <SubjectSelect
-          label="Section *"
-          options={[
-            { id: 1, name: "A" },
-            { id: 2, name: "B" },
-            { id: 3, name: "C" },
-          ]}
+          label="Class"
+          value={form.class}
+          options={classes}
+          onChange={(v) => setForm({ ...form, class: v })}
         />
 
-        {/* TEACHER */}
         <SubjectSelect
-          label="Teacher *"
-          options={[
-            { id: 1, name: "Ali Khan" },
-            { id: 2, name: "Sara Ahmed" },
-            { id: 3, name: "Usman Raza" },
-          ]}
+          label="Section"
+          value={form.section}
+          options={sections}
+          onChange={(v) => setForm({ ...form, section: v })}
         />
 
-        {/* DESCRIPTION */}
-        <div className="md:col-span-3">
-          <label className="text-sm font-medium text-zinc-600">
-            Description (Optional)
-          </label>
-          <textarea
-            rows="4"
-            placeholder="Short subject description"
-            className="
-              mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]
-              text-sm outline-none resize-none
-              focus:ring-2 focus:ring-[var(--secondary)]
-            "
-          />
-        </div>
+        <SubjectSelect
+          label="Teacher"
+          value={form.teacher}
+          options={teachers.map((t) => ({
+            _id: t._id,
+            name: `${t.firstName} ${t.lastName}`,
+          }))}
+          onChange={(v) => setForm({ ...form, teacher: v })}
+        />
 
-        {/* BUTTONS */}
-        <div className="md:col-span-3 flex gap-4 mt-4">
-          <button
-            type="submit"
-            className="
-              px-12 py-3 rounded-md bg-[#0A2540]
-              text-white font-semibold hover:opacity-90 transition
-            "
-          >
-            Save Subject
-          </button>
+        <textarea
+          className="md:col-span-3 px-4 py-3 bg-[#F3F4F6] rounded-md"
+          placeholder="Description"
+          value={form.description}
+          onChange={(e) => setForm({ ...form, description: e.target.value })}
+        />
 
-          <button
-            type="reset"
-            className="
-              px-12 py-3 rounded-md bg-[#0A2540]
-              text-white font-semibold hover:opacity-90 transition
-            "
-          >
-            Reset
+        <div className="md:col-span-3 flex gap-4">
+          <button className="px-12 py-3 bg-[#0A2540] text-white rounded-md">
+            Save
           </button>
         </div>
       </form>
