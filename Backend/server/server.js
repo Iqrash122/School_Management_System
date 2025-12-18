@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "../config/db.js";
 import sectionRoutes from '../routes/sectionRoutes.js'
 import classRoutes from "../routes/classRoutes.js";
-import  studentsRoutes  from "../routes/studentRoutes.js";
+import studentsRoutes from "../routes/studentRoutes.js";
 import teacherRoutes from '../routes/teacherRoutes.js'
 dotenv.config();
 connectDB();
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use("/api/sections", sectionRoutes);
 app.use("/api/classes", classRoutes);
 app.use("/api/students", studentsRoutes);
-app.use("/api/teacher", teacherRoutes);
+app.use("/api/teachers", teacherRoutes);
 
 
 app.get("/", (req, res) => {

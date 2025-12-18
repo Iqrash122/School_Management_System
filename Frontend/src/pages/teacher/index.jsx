@@ -8,27 +8,53 @@ export default function TeacherIndex() {
   const navigate = useNavigate();
   const [teachers, setTeachers] = useState([]);
 
+  const fetchTeachers = async () => {
+    const res = await fetch("http://localhost:5000/api/teachers/get");
+    const data = await res.json();
+    setTeachers(data);
+  };
+
   useEffect(() => {
-    fetch("http://localhost:5000/api/teachers")
-      .then((res) => res.json())
-      .then(setTeachers);
+    fetchTeachers();
   }, []);
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this teacher?")) return;
+
+    await fetch(`http://localhost:5000/api/teachers/delete/${id}`, {
+      method: "DELETE",
+    });
+
+    fetchTeachers();
+  };
 
   return (
     <div>
-      <div className="flex justify-between">
+      {/* TOP BAR */}
+      <div className="flex justify-between items-center mb-4">
         <Breadcrumbs />
+
         <button
           onClick={() => navigate("/teacher/create")}
-          className="px-12 py-3 rounded-md bg-[var(--secondary)] text-white"
+          className="px-12 py-3 rounded-md
+                     border-2 
+                     font-semibold
+                     bg-(--secondary) text-white
+                     transition cursor-pointer hover:bg-(--primary)"
         >
           Create
         </button>
       </div>
 
+      {/* TABLE CARD */}
       <div className="bg-white rounded-md shadow-sm">
         <TeacherFilter />
-        <TeacherTable data={teachers} />
+
+        <TeacherTable
+          data={teachers}
+          onEdit={(id) => navigate(`/teacher/update/${id}`)}
+          onDelete={handleDelete}
+        />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-export default function Table({ data = [] }) {
+export default function Table({ data = [], onEdit, onDelete }) {
   return (
     <div className="bg-white rounded-md shadow-sm overflow-x-auto">
       <table className="w-full text-sm">
@@ -8,25 +8,25 @@ export default function Table({ data = [] }) {
             <th className="px-4 py-3">
               <input type="checkbox" />
             </th>
-            <th className="px-4 py-3 font-semibold">Roll</th>
+            <th className="px-4 py-3 font-semibold">ID</th>
             <th className="px-4 py-3 font-semibold">Photo</th>
             <th className="px-4 py-3 font-semibold">Name</th>
             <th className="px-4 py-3 font-semibold">Gender</th>
+            <th className="px-4 py-3 font-semibold">Specialization</th>
             <th className="px-4 py-3 font-semibold">Class</th>
             <th className="px-4 py-3 font-semibold">Section</th>
-            <th className="px-4 py-3 font-semibold">Parents</th>
-            <th className="px-4 py-3 font-semibold">Address</th>
-            <th className="px-4 py-3 font-semibold">Date Of Birth</th>
-            <th className="px-4 py-3 font-semibold">Phone</th>
+            <th className="px-4 py-3 font-semibold">DOB</th>
+            <th className="px-4 py-3 font-semibold">Religion</th>
+            <th className="px-4 py-3 font-semibold">Bio</th>
             <th className="px-4 py-3">Actions</th>
           </tr>
         </thead>
 
         {/* TABLE BODY */}
         <tbody className="text-center">
-          {data.map((item, index) => (
+          {data.map((item) => (
             <tr
-              key={index}
+              key={item._id}
               className="border-b last:border-0 hover:bg-[#F7FBFA] transition"
             >
               {/* CHECK */}
@@ -34,23 +34,27 @@ export default function Table({ data = [] }) {
                 <input type="checkbox" />
               </td>
 
-              {/* ROLL */}
-              <td className="px-4 py-4 font-medium text-black">#{item.roll}</td>
+              {/* ID */}
+              <td className="px-4 py-4 font-semibold">{item.idNumber}</td>
 
               {/* PHOTO */}
               <td className="px-4 py-4">
                 <img
-                  src={item.avatar}
-                  alt={item.name}
-                  className="w-10 h-10 rounded-full object-cover"
+                  src={item.photo || "/avatar.png"}
+                  className="w-10 h-10 rounded-full object-cover mx-auto"
                 />
               </td>
 
               {/* NAME */}
-              <td className="px-4 py-4 font-medium">{item.name}</td>
+              <td className="px-4 py-4 font-medium">
+                {item.firstName} {item.lastName}
+              </td>
 
               {/* GENDER */}
               <td className="px-4 py-4">{item.gender}</td>
+
+              {/* SPECIALIZATION */}
+              <td className="px-4 py-4">{item.specialization}</td>
 
               {/* CLASS */}
               <td className="px-4 py-4">{item.class}</td>
@@ -58,39 +62,43 @@ export default function Table({ data = [] }) {
               {/* SECTION */}
               <td className="px-4 py-4">{item.section}</td>
 
-              {/* PARENTS */}
-              <td className="px-4 py-4">{item.parent}</td>
-
-              {/* ADDRESS */}
-              <td className="px-4 py-4">{item.address}</td>
-
               {/* DOB */}
               <td className="px-4 py-4">{item.dob}</td>
 
-              {/* PHONE */}
-              <td className="px-4 py-4">{item.phone}</td>
+              {/* RELIGION */}
+              <td className="px-4 py-4">{item.religion}</td>
 
-              {/* EMAIL */}
+              {/* BIO */}
+              <td className="px-4 py-4 max-w-[200px] truncate">{item.bio}</td>
 
-              {/* ACTION */}
-              {/* ACTION */}
+              {/* ACTIONS */}
               <td className="px-4 py-4">
                 <div className="flex items-center justify-center gap-4">
-                  <button className="text-sm text-blue-600 hover:underline cursor-pointer">
-                    View
-                  </button>
-
-                  <button className="text-sm text-green-600 hover:underline cursor-pointer">
+                  <button
+                    onClick={() => onEdit(item._id)}
+                    className="text-sm text-green-600 hover:underline"
+                  >
                     Edit
                   </button>
 
-                  <button className="text-sm text-red-600 hover:underline cursor-pointer">
+                  <button
+                    onClick={() => onDelete(item._id)}
+                    className="text-sm text-red-600 hover:underline"
+                  >
                     Delete
                   </button>
                 </div>
               </td>
             </tr>
           ))}
+
+          {data.length === 0 && (
+            <tr>
+              <td colSpan="12" className="py-6 text-zinc-500">
+                No teachers found
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
