@@ -288,9 +288,6 @@ export default function CreateForm({ editData }) {
           <label className="text-sm font-medium text-zinc-600">Bio</label>
           <textarea
             rows="7"
-            name="bio"
-            value={form.bio}
-            onChange={handleChange}
             className="mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]"
           />
         </div>
