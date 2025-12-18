@@ -70,7 +70,7 @@ function App() {
         {/* CLASS */}
         <Route path="/class" element={<ClassIndex />} />
         <Route path="/class/create" element={<ClassCreate />} />
-        <Route path="/class/:id/edit" element={<ClassUpdate />} />{" "}
+        <Route path="/class/:id/edit" element={<ClassUpdate />} />  
         <Route path="/class/section" element={<Section />} />
         <Route path="/class/section/create" element={<SectionCreate />} />
         <Route path="/class/section/edit/:id" element={<EditSection />} />
