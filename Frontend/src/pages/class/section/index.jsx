@@ -88,9 +88,12 @@ export default function Index() {
                   <td className="px-6 py-4">{section.section_name}</td>
                   <td className="px-6 py-4 flex gap-3">
                     <button
+                      onClick={() =>
+                        navigate(`/class/section/edit/${section._id}`)
+                      }
                       className="px-4 py-1 border border-blue-500 text-blue-500
-                                 rounded hover:bg-blue-500 hover:text-white
-                                 transition"
+             rounded hover:bg-blue-500 hover:text-white
+             transition-all active:scale-95"
                     >
                       Edit
                     </button>

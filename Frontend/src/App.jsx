@@ -24,8 +24,9 @@ import TeacherUpdate from "./pages/teacher/update";
 import ClassIndex from "./pages/class/index";
 import ClassCreate from "./pages/class/create";
 import ClassUpdate from "./pages/class/update";
-import Section from './pages/class/section/index'
-import SectionCreate from './pages/class/section/create'
+import Section from "./pages/class/section/index";
+import SectionCreate from "./pages/class/section/create";
+import EditSection from './pages/class/section/update'
 // SUBJECTS
 import SubjectsIndex from "./pages/subjects/index";
 import SubjectsCreate from "./pages/subjects/create";
@@ -75,6 +76,7 @@ function App() {
         <Route path="/class/section" element={<Section />} />
         <Route path="/class/section/create" element={<SectionCreate />} />
         <Route path="/class/update/:id" element={<ClassUpdate />} />
+        <Route path="/class/section/edit/:id" element={<EditSection />} />
 
         {/* SUBJECTS */}
         <Route path="/subjects" element={<SubjectsIndex />} />
