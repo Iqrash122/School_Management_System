@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Breadcrumbs from "../../components/breadCrums/breadcrums";
-import StudentForm from "../../components/form";
+import StudentForm from "../../components/StudentForm";
 
 export default function StudentsUpdate() {
   const { id } = useParams();
