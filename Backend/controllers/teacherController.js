@@ -22,6 +22,7 @@ export const createTeacher = async (req, res) => {
         const teacher = await Teacher.create({
             ...req.body,
             idNumber,
+            photo: req.file? `uploads/teachers/${req.file.filename}` : null,
         });
 
         res.status(201).json(teacher);
