@@ -7,17 +7,12 @@ export default function Create() {
 
   return (
     <div>
-      {/* HEADER */}
-      <div className="flex flex-row justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4">
         <Breadcrumbs />
-
         <button
           onClick={() => navigate("/exam")}
-          className="
-            px-12 py-3 rounded-md
-            bg-[var(--secondary)] text-white font-semibold text-lg cursor-pointer
-            hover:bg-[var(--primary)] transition
-          "
+          className="px-12 py-3 rounded-md bg-[var(--secondary)]
+                     text-white font-semibold hover:bg-[var(--primary)]"
         >
           Back
         </button>

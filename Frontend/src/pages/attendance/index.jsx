@@ -9,7 +9,17 @@ export default function Index() {
       {/* HEADER */}
       <div className="flex flex-row justify-between items-center mb-4">
         <Breadcrumbs />
+
+        <button
+          onClick={() => navigate("/attendance/create")}
+          className="px-12 py-3 rounded-md bg-[var(--secondary)]
+                text-white font-semibold text-lg hover:bg-[var(--primary)]
+                transition-all active:scale-95"
+        >
+          Create
+        </button>
       </div>
+
       <div className="bg-white rounded-md shadow-sm">
         <AttendenceFilter />
       </div>

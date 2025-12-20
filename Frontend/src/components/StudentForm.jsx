@@ -160,8 +160,8 @@ export default function StudentForm({
       fName,
       fCnic,
       fNumber,
-      class: selectedClass.name,
-      section: selectedSection.name,
+      class: selectedClass.id,
+      section: selectedSection.id,
       bloodGroup: bloodGroup.name,
       religion: religion.name,
       bio,
@@ -196,10 +196,7 @@ export default function StudentForm({
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-row gap-6 flex-wrap"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-row gap-6 flex-wrap">
       <div className="bg-white rounded-md shadow-sm p-6 w-2/3 grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* REGISTRATION (AUTO) */}
         <input
@@ -207,7 +204,6 @@ export default function StudentForm({
           placeholder="Registration auto-generated"
           className="bg-gray-200 px-4 py-3 rounded-md"
           hidden={type === "update"}
-
         />
 
         <Input label="First Name *" value={firstName} setValue={setFirstName} />
@@ -261,7 +257,6 @@ export default function StudentForm({
           value={religion}
           onChange={setReligion}
         />
-
 
         <div className="md:col-span-3 flex gap-4 mt-6 justify-between items-end">
           <span className="text-red-500 text-[12px] font-bold">

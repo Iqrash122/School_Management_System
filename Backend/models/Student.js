@@ -10,19 +10,26 @@ const studentSchema = new mongoose.Schema(
 
         rollNumber: String,
 
-        firstName: { type: String, required: true },
-        lastName: { type: String, required: true },
+        firstName: { type: String,  },
+        lastName: { type: String,  },
 
-        gender: { type: String, enum: ["Male", "Female"], required: true },
-        dateOfBirth: { type: Date, required: true },
+        gender: { type: String, enum: ["Male", "Female"],  },
+        dateOfBirth: { type: Date,  },
 
         StuCnic: Number,
         fName: String,
         fCnic: Number,
         fNumber: Number,
 
-        class: String,
-        section: String,
+        class: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Class",
+        },
+
+        section: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Section",
+        },
 
         bloodGroup: String,
         religion: String,
