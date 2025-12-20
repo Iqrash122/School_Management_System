@@ -1,4 +1,6 @@
 export default function Table({ data = [], onEdit, onDelete }) {
+
+  const BASE_URL = "http://localhost:5000";
   return (
     <div className="bg-white rounded-md shadow-sm overflow-x-auto">
       <table className="w-full text-sm">
@@ -40,7 +42,7 @@ export default function Table({ data = [], onEdit, onDelete }) {
               {/* PHOTO */}
               <td className="px-4 py-4">
                 <img
-                  src={item.photo || "/avatar.png"}
+                  src={item.photo ? `${BASE_URL}/${item.photo}` : "/avatar.png"}
                   className="w-10 h-10 rounded-full object-cover mx-auto"
                 />
               </td>

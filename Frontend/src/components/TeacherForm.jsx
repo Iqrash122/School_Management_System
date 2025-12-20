@@ -1,8 +1,8 @@
 import {
-    Listbox,
-    ListboxButton,
-    ListboxOption,
-    ListboxOptions,
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
 } from "@headlessui/react";
 import { useEffect, useState } from "react";
 
@@ -10,9 +10,9 @@ import { useEffect, useState } from "react";
 function SelectField({ label, options = [], value, onChange }) {
   const selected = options.find((o) => o.name === value) || null;
 
-    return (
-        <div>
-            <label className="text-sm font-medium text-zinc-600">{label}</label>
+  return (
+    <div>
+      <label className="text-sm font-medium text-zinc-600">{label}</label>
 
       <Listbox value={selected} onChange={(val) => onChange(val.name)}>
         <div className="relative mt-2">
@@ -22,26 +22,26 @@ function SelectField({ label, options = [], value, onChange }) {
             </span>
           </ListboxButton>
 
-                    <ListboxOptions className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-sm shadow-lg ring-1 ring-black/5">
-                        {options.map((item) => (
-                            <ListboxOption
-                                key={item._id || item.id}
-                                value={item}
-                                className="cursor-pointer px-4 py-2 text-(--primary) hover:bg-(--primary)/10"
-                            >
-                                {item.name}
-                            </ListboxOption>
-                        ))}
-                    </ListboxOptions>
-                </div>
-            </Listbox>
+          <ListboxOptions className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-sm shadow-lg ring-1 ring-black/5">
+            {options.map((item) => (
+              <ListboxOption
+                key={item._id || item.id}
+                value={item}
+                className="cursor-pointer px-4 py-2 text-(--primary) hover:bg-(--primary)/10"
+              >
+                {item.name}
+              </ListboxOption>
+            ))}
+          </ListboxOptions>
         </div>
-    );
+      </Listbox>
+    </div>
+  );
 }
 
 /* ---------- MAIN FORM ---------- */
 export default function CreateForm({ editData }) {
-    const [photoPreview, setPhotoPreview] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
 
   /* 🔹 FORM STATE */
   const [form, setForm] = useState({
@@ -54,7 +54,7 @@ export default function CreateForm({ editData }) {
     class: "",
     section: "",
     bio: "",
-    photo: "",
+    photo: null,
   });
 
   /* 🔹 DROPDOWNS */
@@ -108,10 +108,15 @@ export default function CreateForm({ editData }) {
 
     const method = editData ? "PUT" : "POST";
 
+    const formData = new FormData();
+    Object.keys(form).forEach((key) => {
+      if (form[key] !== null && form[key] !== "") {
+        formData.append(key, form[key]);
+      }
+    });
     const res = await fetch(url, {
       method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: formData,
     });
 
     console.log("Teacher response:", await res.json());
@@ -146,7 +151,7 @@ export default function CreateForm({ editData }) {
               First Name *
             </label>
             <input
-              name="firstName"
+              name="firstName" required
               value={form.firstName}
               onChange={handleChange}
               className="mt-2 w-full px-4 py-3 rounded-md bg-[#F3F4F6]"
@@ -262,12 +267,12 @@ export default function CreateForm({ editData }) {
           Upload Avatar
         </label>
 
-                <label className="mt-3 w-full h-34 border-2 border-dashed border-zinc-300 rounded-md flex items-center justify-center cursor-pointer bg-[#F9FAFB]">
-                    {photoPreview ? (
-                        <img src={photoPreview} className="w-full h-full object-cover" />
-                    ) : (
-                        <p className="text-sm text-zinc-500">Click to upload</p>
-                    )}
+        <label className="mt-3 w-full h-34 border-2 border-dashed border-zinc-300 rounded-md flex items-center justify-center cursor-pointer bg-[#F9FAFB]">
+          {photoPreview ? (
+            <img src={photoPreview} className="w-full h-full object-cover" />
+          ) : (
+            <p className="text-sm text-zinc-500">Click to upload</p>
+          )}
 
           <input
             type="file"
@@ -276,9 +281,9 @@ export default function CreateForm({ editData }) {
             onChange={(e) => {
               const file = e.target.files[0];
               if (file) {
-                const url = URL.createObjectURL(file);
-                setPhotoPreview(url);
-                setForm({ ...form, photo: url });
+                // const url = URL.createObjectURL(file);
+                setPhotoPreview(URL.createObjectURL(file));
+                setForm({ ...form, photo: file });
               }
             }}
           />

@@ -23,7 +23,7 @@ app.use("/api/teachers", teacherRoutes);
 app.use("/api/subjects", subjectRoutes);
 app.use("/api/timetable", timeTableRoutes);
 app.use("/api/dashboard", dashboardRoutes);
-
+app.use("/uploads", express.static('uploads'));
 
 app.get("/", (req, res) => {
     res.send("API Running...");

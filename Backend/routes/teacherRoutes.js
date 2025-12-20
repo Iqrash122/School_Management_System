@@ -6,9 +6,10 @@ import {
     updateTeacher,
     deleteTeacher,
 } from "../controllers/teacherController.js";
+import { upload } from "../middleware/uploads.js";
 
 const router = express.Router();
-router.post("/create", createTeacher);
+router.post("/create", upload.single('photo'), createTeacher);
 router.get("/get", getTeacher);
 router.get("/edit/:id", getTeacherbyID);
 router.put("/update/:id", updateTeacher);
