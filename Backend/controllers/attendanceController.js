@@ -44,3 +44,22 @@ export const getAttendance = async (req, res) => {
         res.status(500).json({ message: "Attendance fetch failed" });
     }
 };
+
+
+// controllers/attendanceController.js
+export const getAttendanceForMonth = async (req, res) => {
+    try {
+        const { classId, sectionId, month, session } = req.query;
+
+        const records = await Attendance.find({
+            class: classId,
+            section: sectionId,
+            month: Number(month),
+            session,
+        }).populate("records.student");
+
+        res.json(records);
+    } catch (err) {
+        res.status(500).json({ message: "Failed to fetch monthly attendance" });
+    }
+};
