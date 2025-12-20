@@ -26,13 +26,9 @@ app.use("/api/teachers", teacherRoutes);
 app.use("/api/subjects", subjectRoutes);
 app.use("/api/timetable", timeTableRoutes);
 app.use("/api/dashboard", dashboardRoutes);
-<<<<<<< HEAD
 app.use("/api/exams", examRoutes);
 app.use("/api/attendance", attendanceRoutes);
-
-=======
 app.use("/uploads", express.static('uploads'));
->>>>>>> ff58924a70cc2434a6bfc3d9aa85afdf2069a175
 
 app.get("/", (req, res) => {
     res.send("API Running...");
