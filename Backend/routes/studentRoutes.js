@@ -4,7 +4,7 @@ import {
     getStudents,
     getSingleStudent,
     updateStudent,
-    deleteStudent,
+    deleteStudent, getStudentsByClassSection
 } from "../controllers/studentController.js";
 
 const router = express.Router();
@@ -14,6 +14,6 @@ router.get("/show", getStudents);
 router.get("/single/:id", getSingleStudent);
 router.put("/update/:id", updateStudent);
 router.delete("/delete/:id", deleteStudent);
-
+router.get("/by-class-section", getStudentsByClassSection);
 
 export default router;

@@ -51,6 +51,7 @@ export default function Create() {
                 setSelectedClass(e.target.value);
                 setSelectedSection("");
                 loadSections(e.target.value);
+                console.log("Selected Class:", e.target.value); // ← check
               }}
               className="w-full px-4 py-3 rounded-md bg-[#F3F4F6]"
             >
@@ -70,7 +71,10 @@ export default function Create() {
             </label>
             <select
               value={selectedSection}
-              onChange={(e) => setSelectedSection(e.target.value)}
+              onChange={(e) => {
+                setSelectedSection(e.target.value);
+                console.log("Selected Section:", e.target.value); // ← check
+              }}
               disabled={!selectedClass}
               className="w-full px-4 py-3 rounded-md bg-[#F3F4F6]"
             >

@@ -50,3 +50,24 @@ export const deleteStudent = async (req, res) => {
     await Student.findByIdAndDelete(req.params.id);
     res.json({ message: "Deleted successfully" });
 };
+
+
+export const getStudentsByClassSection = async (req, res) => {
+    try {
+        const { classId, sectionId } = req.query;
+
+        if (!classId || !sectionId) {
+            return res.status(400).json({ message: "classId and sectionId are required" });
+        }
+
+        const students = await Student.find({
+            class: classId,
+            section: sectionId,
+        }).sort({ rollNo: 1 }); // roll number ke hisab se sort kar do
+
+        res.json(students);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Failed to fetch students" });
+    }
+};

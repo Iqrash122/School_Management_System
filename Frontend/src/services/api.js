@@ -19,8 +19,10 @@ export const getClasses = async () => {
     return safeJson(res);
 };
 
-export const getSections = async () => {
-    const res = await fetch(`${BASE}/sections/show`);
+
+export const getSections = async (classId) => {
+    if (!classId) return [];
+    const res = await fetch(`${BASE}/sections/show?classId=${classId}`);
     return safeJson(res);
 };
 
@@ -71,12 +73,19 @@ export const deleteExam = async (id) => {
 
 
 
-
+// api.js
 export const getStudentsByClassSection = async (classId, sectionId) => {
+    if (!classId || !sectionId) return [];
     const res = await fetch(
-        `http://localhost:5000/api/students/by-class-section?classId=${classId}&sectionId=${sectionId}`
+        `${BASE}/students/by-class-section?classId=${classId}&sectionId=${sectionId}`
     );
-    return res.json();
+
+    if (!res.ok) {
+        console.error("Failed to fetch students:", res.status, res.statusText);
+        return []; // empty array to avoid crash
+    }
+
+    return await res.json();
 };
 
 export const markAttendance = async (data) => {
@@ -91,6 +100,14 @@ export const markAttendance = async (data) => {
 export const getAttendance = async (classId, sectionId, date) => {
     const res = await fetch(
         `${BASE}/attendance/view?classId=${classId}&sectionId=${sectionId}&date=${date}`
+    );
+    return res.json();
+};
+
+// services/api.js
+export const getAttendanceForMonth = async ({ classId, sectionId, month, session }) => {
+    const res = await fetch(
+        `${BASE}/attendance/month?classId=${classId}&sectionId=${sectionId}&month=${month}&session=${session}`
     );
     return res.json();
 };
